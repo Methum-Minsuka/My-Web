@@ -33,3 +33,12 @@ function type() {
 
 // Start the typing animation
 document.addEventListener('DOMContentLoaded', type);
+
+
+
+
+document.querySelectorAll('.navbar a').forEach((link, index) => {
+    setTimeout(() => {
+        link.classList.add('show');
+    }, index * 200); // Delay the animation for each link
+});
