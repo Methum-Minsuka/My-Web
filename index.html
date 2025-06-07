@@ -1,67 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Methum</title>
-    <!-- Link to the Favicon -->
-    <link rel="icon" href="Icon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBC33ME5XN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-RBC33ME5XN');
-    </script>
+  <title>Check My Location</title>
 </head>
 <body>
-    <header class="header">
-        <!--<a href="#" class="logo">logo</a>-->
-        
-        <input type="checkbox" id="check">
-        <label for="check" class="icons">
-            <i class='bx bx-menu' id="menu-icon"></i>
-            <i class='bx bx-x' id="close-icon"></i>
-        </label>
+  <h2>Click the button to get your location</h2>
+  <button onclick="getLocation()">Get My Location</button>
+  <p id="locationOutput"></p>
 
-        <nav class="navbar">
-            <a href="#" style="--i:0">Home</a>
-            <a href="#" style="--i:1">About</a>
-            <a href="#" style="--i:2">Gallery</a>
-            <a href="#" style="--i:3">Services</a>
-            <a href="contact.html" style="--i:4">Contact</a>
-        </nav>
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        document.getElementById("locationOutput").innerText = "Geolocation is not supported.";
+      }
+    }
 
-        <!-- Added Login Button -->
-        <a href="login.html" class="login-button">Login</a>
-    </header>
-    <div class="home-content">
-        <h1 class="name">AI Image Generate</h1>
-        
-        <p>https://www.mediafire.com/file/1asdps8yml9ahy9/BARQ_X_CHEAT.rar/file</p>
-        <!--<div class="typing-container">
-            <span class="typing-text" id="typingText"></span>
-            <span class="cursor">|</span>
-        </div>-->
-        <p class="about">Send us your AI prompts via WhatsApp,
-            we’ll generate breathtaking images instantly for you!.
-        </p>
-        <button class="Btn" onclick="window.location.href='https://api.whatsapp.com/send?phone=94781904675&text=I%20want%20to%20create%20a%20picture%20with%20AI.'">
-            Contact via WhatsApp
-          </button>
-                  
-        <div class="social-media">
-            <a href="#"><i class='bx bxl-whatsapp'        ></i></a>
-            <a href="#"><i class='bx bxl-facebook'        ></i></a>
-            <a href="#"><i class='bx bxl-instagram'       ></i></a>
-            <a href="#"><i class='bx bxl-tiktok'          ></i></a>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    function showPosition(position) {
+      document.getElementById("locationOutput").innerText =
+        "Latitude: " + position.coords.latitude +
+        ", Longitude: " + position.coords.longitude;
+    }
+  </script>
 </body>
 </html>
